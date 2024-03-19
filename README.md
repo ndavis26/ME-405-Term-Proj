@@ -13,15 +13,15 @@ The hardware involved features a modified NERF blaster toy to fire the darts.[^1
 
 | **Item** | **Source** | **Link to Purchase or Info** | **Function** | **Quantity** |
 |---|---|---|---|---|
-| NERF Modulus Stryfe Blaster | Amazon | [Purchase](https://www.amazon.com/NERF-Motorized-Extension-Official-Exclusive/dp/B06XWF6NYW)) | Fires foam dart | 1 |
+| NERF Modulus Stryfe Blaster | Amazon | [Purchase](https://www.amazon.com/NERF-Motorized-Extension-Official-Exclusive/dp/B06XWF6NYW) | Fires foam dart | 1 |
 | Polulu 50:1 Metal Gearmotor  | Robotics Club | [Info](https://www.pololu.com/product/4753/specs) | Drives blaster base plate | 1 |
-| Lazy Susan  | Amazon |  | Allows rotation between <br>motor mount and blaster base plate | 1 |
+| Lazy Susan  | Amazon | [Purchase](https://www.amazon.com/Turntable-bearing-rotating-cabinet-profile/dp/B08N52SVXF/ref=sr_1_5?crid=QEYA1NV8CA09&dib=eyJ2IjoiMSJ9.CMWjk2w-krsiL7peqCRVGm3W2gQaMjQGNbthVwyHQjTypNlGZs2VOZTHS3H_GIFq6Xziwl5j5dOtYv1_zar56G5uAWkpMtW1MNDaYM-67PEwL6wPoq9B0EWuAzYmD0b71HVDyV94N078vdZwfOOz1iGUHZBz31XryJTImlymTNS0DIW9eimfh2QxxdsWvfzapHUppExcQjaQf11oqseodX1cS_x_K5a1A84BwVE8K-Xo-ouSw5b62tj3LhWTRxUQgLhotKcvI61DQ2U9M_M4VuD9idzFSWsJsD2yY3MAz6A.tn3RYjO4Nj1wbqpFDI-VxyI9_y5sIj3FluF1KYcRKC4&dib_tag=se&keywords=lazy%2Bsusan%2Bbearing&qid=1710824558&sprefix=lazy%2Bsusan%2Bbearin%2Caps%2C155&sr=8-5&th=1) | Allows rotation between <br>motor mount and blaster base plate | 1 |
 | Mounting Plate - Wood | Manufactured - Laser Cut | N/A | Blaster mounting top plate | 1 |
 | Mounting Plate - Acrylic | Manufactured - Laser Cut | N/A | Blaster mounting bottom plate | 1 |
 | Motor Mounting Plate | 3D Printed | N/A | Motor mounting plate | 1 |
 | Rail Clip with Servo  | 3D Printed | N/A | Connects servo, blaster, and <br>base plate | 1 |
-| Towerpro MG995 | Robotics Club | Info | Pulls blaster trigger | 1 |
-| IRFZ44N | Amazon | Purchase | MOSFET for controlling blaster<br>flywheels | 1 |
+| Towerpro MG995 | Robotics Club | [Info](https://servodatabase.com/servo/towerpro/mg995) | Pulls blaster trigger | 1 |
+| IRFZ44N | Amazon | [Purchase](https://www.amazon.com/dp/B07MW1N4Q5?psc=1&ref=ppx_yo2ov_dt_b_product_details) | MOSFET for controlling blaster<br>flywheels | 1 |
 | M3-0.5 Screws, 8 mm, 4-pack | Home Depot | N/A | Motor mounting screws | 2 |
 | #10-32 Machine Screws and Nuts Combo,<br>3/4", 8-pack | Home Depot | N/A | Holds together base plate | 2 |
 | #12 Wood Screws, 1-1/2", 3-pack | Home Depot | N/A | Attaches lower half of lazy susan<br>and motor mounting plate to wooden<br>supports | 2 |
