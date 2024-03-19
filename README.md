@@ -9,7 +9,7 @@ The purpose of this device is to autonomously aim a NERF blaster at a target and
 
 ## Physical Contruction
 
-![Nerf Turret SolidWorks](NerfTurret.PNG)
+![](CAD/NerfTurret.PNG)
 
 The hardware involved features a modified NERF blaster toy to fire the darts.[^1] This blaster is staged upon a flat plate that is on top of a lazy susan bearing. On the underside of the lazy susan bearing, there is a motor mounting plate. When the motor is mounted to this plate, it connects directly to the blaster base. Although the CAD model shows a single, uniform plate for mounting the NARF blaster, the mounting plate on the current turret uses two plates stacked - one made of acrylic and another made of wood. The acrylic plate is to ensure that there is no deformation, since the motor directly drives the plate on its shaft and acrylic is extremely brittle. The wood plate ensures that there is enough thickness that the motor shaft does not stick out. A list of materials sourced from outside of the mechatronics lab is included in the [Materials](#materials) section.
 
@@ -30,6 +30,8 @@ The circuitry for this device relatively simple. There are 4 main peripheral ele
 | Encoder A Output | PC6 |
 | Encoder B Output | PC7 |
 
+This motor has 64 ticks per revolution internally. Given that the output ratio is 50:1, the motor effectively has 3200 ticks per revolution, which is the autoreload value used in the coding.
+
 ### Servo Motor
 
 | **Servo Motor Pin** | **Nucleo Pin** |
@@ -38,7 +40,7 @@ The circuitry for this device relatively simple. There are 4 main peripheral ele
 | V_in | Power Supply 12V |
 | Servo Ground | GND |
 
-![Servo Control](<Servo Control.jpg>)
+![](<circuit diagrams/Servo Control.jpg>)
 
 Since the servo motor cannot handle 12 volts of power, it must use a voltage regulator to keep the servo power at 5 volts.
 
@@ -58,7 +60,7 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 | MOSFET Gate | PC3 |
 | Ground | GND |
 
-![FlywheelControl](<Flywheel Control.png>)
+![](<circuit diagrams/Flywheel Control.png>)
 
 Pin C3 is used to control the NERF flyhweels.
 
@@ -80,4 +82,6 @@ Pin C3 is used to control the NERF flyhweels.
 | #12 Wood Screws, 1-1/2", 3-pack | Home Depot | N/A | Attaches lower half of lazy susan<br>and motor mounting plate to wooden<br>supports | 2 |
 | Wooden Legs | Home Depot | N/A | Turret supports | 4 |
 
+# Software
 
+Due to difficulty implementing of 
