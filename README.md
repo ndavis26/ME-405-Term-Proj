@@ -17,7 +17,7 @@ The hardware involved features a modified NERF blaster toy to fire the darts.[^1
 
 ## Circuitry
 
-The circuitry for this device relatively simple. There are 4 main peripheral electronics to the Nucleo. They are the main motor + encoder, the servo motor, the IR camera, and the NERF flywheels. Although all three are controlled by the Nucleo, the main motor and servo motor are powered by the 12V bench power supply and the flywheels are powered by the 6V battery pack inside of the NERF blaster. The pin connections and any relevant circuit diagrams are included below.
+The circuitry for this device is relatively simple. There are 4 main peripheral electronics to the Nucleo. They are the main motor with encoder, the servo motor, the IR camera, and the NERF flywheels. Although all three are controlled by the Nucleo, the main motor and servo motor are powered by the 12V bench power supply and the flywheels are powered by the 6V battery pack inside of the NERF blaster. The pin connections and any relevant circuit diagrams are included below.
 
 ### Main Motor
 
@@ -84,16 +84,18 @@ Pin C3 is used to control the NERF flyhweels.
 
 # Software
 
-Due to the sequential nature of the dueling procedure, the device can be coded using a single task with multiple states instead of cotasking. The currently working version of main is *main_v2.py*, which uses this single task implementation. However, there is also the cotask version of the file, *main.py*. This version of main (main.py) is not fully debugged and still has issues, so main_v2.py is the used file for demonstration.
+The software used will be covered briefly here but will be discussed more extensively within the Doxygen documentation.
 
-The dueling is completed in 6 repeating steps, besides intialization:
+Due to the sequential nature of the dueling procedure, the device can be coded using a single task with multiple states instead of cotasking. The currently working version of main is *main_v2.py*, which uses this single task implementation. However, there is also the cotask version of the file, *main.py*. This version of main (main.py) is not fully debugged and still has issues, so main_v2.py is the used file for demonstration and will be the software discussed within the documentation.
 
-1. Wait for button press
-2. Wait 5 seconds
-3. Check current position of opponent
-4. Turn to aim at opponent
-5. Fire
-6. Turn back around and reset to Step 1.
+The dueling is completed in 6 repeating steps, besides intialization. The peripheral(s) used during the step are shown in italics:
 
-The full Doxygen documentation can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/)
+1. Wait for button press.
+2. Wait 5 seconds.
+3. Check current position of opponent. *-IR camera*
+4. Turn to aim at opponent. *-Motor*
+5. Fire. *-Servo, Flywheels*
+6. Turn back around and reset to Step 1. *-Motor*
+
+The full Doxygen documentation can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/).
 
