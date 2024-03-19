@@ -99,12 +99,12 @@ def mastermind():
             if not button.value():
                 state = S2_WAIT
                 
-        elif(state == S2_WAIT): # turns 180 degrees and waits 6 seconds            
+        elif(state == S2_WAIT): # waits for 5 seconds before turning and firing         
             print('waiting to duel')
             time.sleep(5)
             state = S3_CAM
                 
-        elif(state == S3_CAM): # takes the currently stored camera info
+        elif(state == S3_CAM): # takes the currently stored camera info and creates an angle
             print("checking camera")
             image = None
             while not image:
@@ -119,7 +119,7 @@ def mastermind():
             print("adjusting")
             state = S4_MOTOR
             
-        elif(state == S4_MOTOR): # moves motor
+        elif(state == S4_MOTOR): # moves motor to desired angle
             setpoint = 1600 + (angle*05)
             motorctrl.set_setpoint(setpoint)
             if abs(enc.read()-setpoint) <= 5:
@@ -157,46 +157,6 @@ def mastermind():
                 print("duel finished")
                 state = S1_BUTTON
                 print("waiting for button press")
-        
-
-
-def task3_camera(shares):
-    """!
-    constantly updates the intertask variable "ir_angle"
-    with an angle of greatest heat signature.
-    """
-    S0_INIT = 0
-    S1_UPDATE_CAMERA = 1
-    
-    state = S0_INIT
-    while True:
-        ir_angle, motor_setpoint = shares
-        if(state == S0_INIT):
-            
-            state = S1_UPDATE_CAMERA
-            yield
-        elif(state == S1_UPDATE_CAMERA):
-            # Get an image and see how long it takes to grab that image
-            # Keep trying to get an image; this could be done in a task, with
-            # the task yielding repeatedly until an image is available
-            image = None
-            while not image:
-                image = camera.get_image_nonblocking()
-                yield
-            # Can show image.v_ir, image.alpha, or image.buf; image.v_ir best?
-            # Display pixellated grayscale or numbers in CSV format; the CSV
-            # could also be written to a file. Spreadsheets, Matlab(tm), or
-            # CPython can read CSV and make a decent false-color heat plot.
-            csv = []
-            for line in camera.get_csv(image, limits=(0, 99)):
-                csv.append(sum([eval(i) for i in line.split(',')]))
-                yield
-            cam_row = csv.index(max(csv))
-            angle = cam_row - 12.5
-            ir_angle.put(angle) 
-            gc.collect()
-            yield
-
 
 if __name__ == "__main__":
     mastermind()

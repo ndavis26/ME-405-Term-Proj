@@ -59,17 +59,15 @@ def task1_mm(shares):
             yield
             
         elif(state == S1_BUTTON): # waits for button press
-            if button.value():
-                state = S2_TURN
+            if not button.value():
+                state = S2_WAIT
             yield
         elif(state == S2_TURN): # turns 180 degrees and waits 6 seconds
             print("turning")
             motor_setpoint.put(1600)
-            time.sleep(6)
-            
-#             for _ in range(600):
-#                 time.sleep_us(1000)
-#                 yield
+            for _ in range(600):
+                time.sleep_us(1000)
+                yield
             state = S3_CAM
             yield
         elif(state == S3_CAM): # takes the currently stored camera info
@@ -88,20 +86,21 @@ def task1_mm(shares):
             yield
         elif(state == S5_FIRE): # fire away!
             print("firing!")
-#             flywheel.high() # start flywheel motors
-#             for _ in range(2000):
-#                 time.sleep_us(1000)
-#             servo.set_angle(142)
-#             for _ in range(1000):
-#                 time.sleep_us(1000)
-#             flywheel.low()
-#             servo.set_angle(100)
-#             time.sleep_ms(500)
-#             servo.off()
+            flywheel.high() # start flywheel motors
+            for _ in range(2000):
+                time.sleep_us(1000)
+            servo.set_angle(142)
+            for _ in range(1000):
+                time.sleep_us(1000)
+            flywheel.low()
+            servo.set_angle(100)
+            time.sleep_ms(500)
+            servo.off()
             state = S6_RESET
             yield
         elif(state == S6_RESET): # resets system
             motor_setpoint.put(0)
+            state = S1_BUTTON
             yield
         
 def task2_motorcontrol(shares):
@@ -137,7 +136,8 @@ def task2_motorcontrol(shares):
             enc = Encoder(encA, encB, readch, encAch, encBch)
             # set up motor control
             motorctrl = MotoEncodo(moe, enc)
-            motorctrl.set_Kp(1)
+            motorctrl.set_Kp(0.028)
+            motorctrl.set_Ki(0.0007)
             
             state = S1_UPDATE_MOTOR
             yield
