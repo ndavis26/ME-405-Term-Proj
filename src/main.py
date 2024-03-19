@@ -141,8 +141,9 @@ def task2_motorcontrol(shares):
             enc = Encoder(encA, encB, readch, encAch, encBch)
             # set up motor control
             motorctrl = MotoEncodo(moe, enc)
-            motorctrl.set_Kp(0.028)
-            motorctrl.set_Ki(0.0007)
+            motorctrl.set_Kp(0.06)
+            motorctrl.set_Ki(0.04)
+            motor_setpoint.put(1600)
             
             state = S1_UPDATE_MOTOR
             yield
@@ -224,9 +225,9 @@ if __name__ == "__main__":
     task1 = cotask.Task(task1_mm, name="Mastermind", priority=2, period=20, profile=True, trace=False, shares=(ir_angle, motor_setpoint))
     task2 = cotask.Task(task2_motorcontrol, name="Motor Control", priority=3, period=10, profile=True, trace=False, shares=(ir_angle, motor_setpoint))
     task3 = cotask.Task(task3_camera, name="Camera", priority=2, period=50,profile=True, trace=False, shares=(ir_angle, motor_setpoint))
-    cotask.task_list.append(task1)
+#     cotask.task_list.append(task1)
     cotask.task_list.append(task2)
-    cotask.task_list.append(task3)
+#     cotask.task_list.append(task3)
     
     # clean up memory
     gc.collect()
