@@ -80,7 +80,7 @@ Pin C3 is used to control the NERF flyhweels.
 | M3-0.5 Screws, 8 mm, 4-pack | Home Depot | N/A | Motor mounting screws | 2 |
 | #10-32 Machine Screws and Nuts Combo,<br>3/4", 8-pack | Home Depot | N/A | Holds together base plate | 2 |
 | #12 Wood Screws, 1-1/2", 3-pack | Home Depot | N/A | Attaches lower half of lazy susan<br>and motor mounting plate to wooden<br>supports | 2 |
-| Wooden Legs | Home Depot | N/A | Turret supports | 4 |
+| Wooden Legs, 4" | Home Depot | N/A | Turret supports | 4 |
 
 # Software
 
