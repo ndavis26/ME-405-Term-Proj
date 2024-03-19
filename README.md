@@ -84,4 +84,16 @@ Pin C3 is used to control the NERF flyhweels.
 
 # Software
 
-Due to difficulty implementing of 
+Due to the sequential nature of the dueling procedure, the device can be coded using a single task with multiple states instead of cotasking. The currently working version of main is *main_v2.py*, which uses this single task implementation. However, there is also the cotask version of the file, *main.py*. This version of main (main.py) is not fully debugged and still has issues, so main_v2.py is the used file for demonstration.
+
+The dueling is completed in 6 repeating steps, besides intialization:
+
+1. Wait for button press
+2. Wait 5 seconds
+3. Check current position of opponent
+4. Turn to aim at opponent
+5. Fire
+6. Turn back around and reset to Step 1.
+
+The full Doxygen documentation can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/)
+
