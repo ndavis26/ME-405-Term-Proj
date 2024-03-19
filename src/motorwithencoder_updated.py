@@ -4,7 +4,7 @@ If this is the main.py file on the Nucleo,
 it will run a motor response test.
 @author Nathaniel Davis
 @author Sebastian Bessoudo
-@date 02-13-2024
+@date 03-19-2024
 """
 
 import micropython
@@ -19,14 +19,14 @@ micropython.alloc_emergency_exception_buf(100)
 
 class MotoEncodo:
     """!
-    This class uses motor control and encoder reading for the user to input a Kp value
-    and its setpoint
+    This class uses an already established motor class object and encoder class object so the user can input a Kp value, Ki value,
+    and a motor setpoint.
     """
     def __init__(self, motor, encoder):
         """!
         Initializes the servo. Also sets up a 
-        @param motor 
-        @param encoder
+        @param motor motor class object to be used
+        @param encoder encoder class object to be used
         """
         self.motor = motor
         self.encoder = encoder
@@ -38,14 +38,14 @@ class MotoEncodo:
     def run(self, level):
         """!
         sets the duty cycle for the motor to run based on
-        @param level
+        @param level duty cycle for the motor between 0-100
         """
         self.motor.set_duty_cycle(level)
         
     def set_setpoint(self, setpoint):
         """!
         sets the setpoint of the motor
-        @setpoint
+        @param setpoint setpoint to have the motor reach
         """
         self.encoder.read()
         self.error = setpoint - self.encoder.pos
@@ -67,6 +67,9 @@ class MotoEncodo:
         """
         self.Ki = Ki
     def plot_results():
+        """!
+        Used for running motor and encoder repsonse test.
+        """
         position = []
         time = [10*x for x in range(500)]
         for i in range(len(time)):

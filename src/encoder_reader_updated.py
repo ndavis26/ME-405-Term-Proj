@@ -2,7 +2,7 @@
 
 @author Nathaniel Davis
 @author Sebastian Bessoudo
-@date 02-12-2024
+@date 03-19-2024
 """
 
 import pyb
@@ -10,12 +10,14 @@ import time
 
 class Encoder:
     """!
-    This class implements an encoder for the motor for an ME405 kit.
+    This class implements an encoder for the motor for an ME405 kit. The current motor used, a Pololu 50:1 motor,
+    has 64 ticks per revolution internally and a 50:1 output ratio, giving the motor 3200 ticks per revolution.
+    For a different motor, the value self.autoreload must be changed to the appropriate ticks per revolution.
     """
 
     def __init__(self, enA, enB, readch, enAch, enBch):
         """!
-        Initializes the encoder. Also sets up a 
+        Initializes the encoder. 
         @param enA encoder channel A pin
         @param enB encoder channel B pin
         @param timer timer used for both encoder pins
@@ -44,7 +46,8 @@ class Encoder:
         """!
         reads the current encoder position
         and checks for overflow or underflow
-        when delta has exceeded positively or negatively half of the 65536 ticks
+        when delta has exceeded positively or negatively half of the 3200 ticks.
+        
         """
 
         # new encoder position = read encoder position

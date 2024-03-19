@@ -4,7 +4,7 @@ When the blue button on the Nucleo is pressed, start the firing process
 of turning around and firing
 @author Nathaniel Davis
 @author Sebastian Bessoudo
-@date 3-12-24
+@date 3-19-24
 """
 
 import pyb
@@ -25,7 +25,11 @@ from mlx90640.calibration import NUM_ROWS, NUM_COLS, IMAGE_SIZE, TEMP_K
 from mlx90640.image import ChessPattern, InterleavedPattern
 
 
-def task1_mm(shares):     
+def task1_mm(shares):
+    """!
+    controls the main flow of the firing procedure
+    @param shares contains the current motor setpoint and IR camera angle
+    """
     S0_INIT = 0
     S1_BUTTON = 1 
     S2_TURN = 2
@@ -107,6 +111,7 @@ def task2_motorcontrol(shares):
     """!
     motor controller that constantly attmepts to
     reach the setpoint set in the intertask variable "motor_setpoint."
+    @param shares contains the current motor setpoint and IR camera angle
     """
     S0_INIT = 0
     S1_UPDATE_MOTOR = 1
@@ -154,6 +159,7 @@ def task3_camera(shares):
     """!
     constantly updates the intertask variable "ir_angle"
     with an angle of greatest heat signature.
+    @param shares contains the current motor setpoint and IR camera angle
     """
     S0_INIT = 0
     S1_UPDATE_CAMERA = 1

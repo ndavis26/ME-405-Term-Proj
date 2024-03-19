@@ -1,7 +1,7 @@
 """! @file servo.py
 Servo controller class. Running as main will make servo rotate at specific speed.
 @author Nathaniel Davis
-@date 3-13-24
+@date 3-19-24
 """
 
 import time
@@ -13,7 +13,8 @@ class Servo:
     """
     def __init__(self, servpin, timer, ch):
         """
-        Creates the servo controller using PWM
+        Creates the servo controller using PWM.
+        The servo's active zone is from 0.5 ms to 2.5 ms PWM. 
         @param servpin pin that the servo is connected to
         @param timer timer for the servo pin
         @param channel channel for the servo pin

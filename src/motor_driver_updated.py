@@ -3,7 +3,7 @@ This is the file that main.py imports the motor driver from. This files establis
 MotorDriver class to be used. 
 @author Nathaniel Davis
 @author Sebastian Bessoudo
-@date 02-05-2024
+@date 03-19-2024
 """
 
 import pyb
@@ -60,7 +60,12 @@ class MotorDriver:
             self.chIN2.pulse_width_percent(abs(self.PWM))
             self.chIN1.pulse_width_percent(0)
     def print(self):
+        """!
+        Prints current PWM
+        """        
         print(self.PWM)
+        
+        
 if __name__ == "__main__":
     moe = MotorDriver(pyb.Pin.board.PA10, pyb.Pin.board.PB4, 1,  pyb.Pin.board.PB5, 2, 3)
     moe.set_duty_cycle(50)
