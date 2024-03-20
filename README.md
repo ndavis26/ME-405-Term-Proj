@@ -123,7 +123,7 @@ The full Doxygen documentation of all the files can be found [here](https://ndav
 Due to the sequential nature of the dueling procedure, only two tasks are needed. 
 
 ### Task 1: Mastermind
-The first task handles the looping dueling procedure. It involves 7 states. There is only 1 intertask variable, *motor_setpoint*, which stores the motor setpoint.
+The first task handles the looping dueling procedure. It involves 7 states. There is only 1 intertask variable, *motor_setpoint*, which stores the motor setpoint. This task has a priority of 1 and a period of 20 ms.
 
 ![](<fsm/T1 - Mastermind.jpg>)
 
@@ -153,7 +153,7 @@ This state starts the uninterruptible firing sequence:
 Turns the blaster back around and resets to state 1.
 
 ### Task 2: Motor Control
-The second task simply handles the motor control. It constantly tries to reach the motor setpoint defined by the *motor_setpoint* intertask variable. The motor controller uses PI control to accurately (albeit slowly) obtain the proper angle. There are only 2 states.
+The second task simply handles the motor control. It constantly tries to reach the motor setpoint defined by the *motor_setpoint* intertask variable. The motor controller uses PI control to accurately (albeit slowly) obtain the proper angle. There are only 2 states. This task has a priority of 1 and a period of 10 ms.
 
 ![](<fsm/T2 - Motor Control.jpg>)
 
