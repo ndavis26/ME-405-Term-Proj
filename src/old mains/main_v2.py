@@ -1,5 +1,5 @@
 """! @file main_v2.py
-Main file for operation of the
+Old version of main.
 @author Nathaniel Davis
 @date 3-13-24
 """

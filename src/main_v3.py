@@ -1,9 +1,7 @@
-"""! @file main.py
-Term Project of Nathaniel Davis and Sebastian Bessoudo.
-When the blue button on the Nucleo is pressed, start the firing process
-of turning around and firing
+"""! @file main_v3.py
+ME 405 NERF Turret Term Project
+The dueling process is started by pressing the blue button on the Nucleo.
 @author Nathaniel Davis
-@author Sebastian Bessoudo
 @date 3-19-24
 """
 
@@ -28,7 +26,7 @@ from mlx90640.image import ChessPattern, InterleavedPattern
 def task1_mm(shares):
     """!
     controls the main flow of the firing procedure
-    @param shares contains the current motor setpoint and IR camera angle
+    @param shares contains the current motor setpoint
     """
     S0_INIT = 0
     S1_BUTTON = 1 
@@ -59,8 +57,8 @@ def task1_mm(shares):
             buttonpin = pyb.Pin.board.PC13
             button = pyb.Pin(buttonpin, pyb.Pin.IN)
             
-            # Setting up camera - referenced from mlx_cam.py
             
+            # Setting up camera - referenced from mlx_cam.py
             # The following import is only used to check if we have an STM32 board such
             # as a Pyboard or Nucleo; if not, use a different library
             try:
@@ -149,7 +147,7 @@ def task2_motorcontrol(shares):
     """!
     motor controller that constantly attmepts to
     reach the setpoint set in the intertask variable "motor_setpoint."
-    @param shares contains the current motor setpoint and IR camera angle
+    @param shares contains the current motor setpoint
     """
     S0_INIT = 0
     S1_UPDATE_MOTOR = 1
@@ -157,7 +155,7 @@ def task2_motorcontrol(shares):
     state = S0_INIT
     while True:
         motor_setpoint = shares
-        if(state == S0_INIT):
+        if(state == S0_INIT): # initializes motor control
             # motor pins
             mtrAplus = pyb.Pin.board.PB4
             Aplusch = 1
@@ -186,7 +184,7 @@ def task2_motorcontrol(shares):
             state = S1_UPDATE_MOTOR
             yield
             
-        elif(state == S1_UPDATE_MOTOR):
+        elif(state == S1_UPDATE_MOTOR): #constantly updates the motor if there is a motor setpoint
             if motor_setpoint.any():
                 setpoint = motor_setpoint.get()
                 motorctrl.set_setpoint(setpoint)
@@ -194,7 +192,7 @@ def task2_motorcontrol(shares):
 #                 print(f'setpoint: {setpoint}, current location: {enc.read()}')
             yield
         
-if __name__ == "__main__":
+if __name__ == "__main__": # run cotask scheduler
     
     # create intertask data here
     motor_setpoint = task_share.Queue('l', 1, thread_protect=True, overwrite=True, name="Motor Setpoint")
