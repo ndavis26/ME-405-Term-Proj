@@ -94,9 +94,9 @@ The dueling is completed in 7 repeating steps, besides intialization. The periph
 ## Files
 
 The files used are:
-* [main_v3.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/main_v3.py) - Holds the tasks and states of the device
-* [motor_driver_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/motor_driver_updated.py) - Reference for motor class object. This class sets the PWM of the motor
-* [encoder_reader_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/encoder_reader_updated.py) - Reference for encoder class object. This class reads the motor encoder
+* [main_v3.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/main_v3.py) - Holds the tasks and states of the device.
+* [motor_driver_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/motor_driver_updated.py) - Reference for motor class object. This class sets the PWM of the motor.
+* [encoder_reader_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/encoder_reader_updated.py) - Reference for encoder class object. This class reads the motor encoder.
 * [motorwithencoder_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/motorwithencoder_updated.py) -  Reference for the motor controller class object. This class controls the motor through PI control.
 * [servo.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/servo.py) -  Reference for the servo class object. This class controls the servo through pulse width signals.
 * [mlx_cam.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/mlx_cam.py) - Reference for the IR camera class object. This class takes pictures using the IR camera by TWI communication. Original file is sourced from the [ME405-Support GitHub repository](https://github.com/spluttflob/ME405-Support).
