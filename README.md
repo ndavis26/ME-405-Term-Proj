@@ -60,8 +60,8 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 |---|---|
 | V_in | 3V3 |
 | Ground | GND |
-| SDA | B9 |
-| SCL | B8 |
+| SDA | PB9 |
+| SCL | PB8 |
 
 <img src="pics/IR camera.jpg" width="300"/>
 
