@@ -5,11 +5,14 @@ README.md
 
 The purpose of this device is to autonomously aim a NERF blaster at a target and fire it after the program is started. It is intended for use by children, with a similar use case as other foam-flinging toys, where the goal is to pelt friends and "foes" alike with harmless foam darts. However, the use of the design can reach far beyond foam darts. Given that the sensor detects heat signatures and operates based off of the greatest heat signature, the code can be used for other applications, such as autonomous fire control, where the device would aim water at a fire's greatest heat location to douse the fire (most often its base, which is where a fire should be targeted with water).
 
+<br/><br/>
+
 # Hardware
 
 ## Physical Contruction
 
 ![](CAD/NerfTurret.PNG)
+![](<pics/Whole Turret.jpg>)
 
 The hardware involved features a modified NERF blaster toy to fire the darts.[^1] This blaster is staged upon a flat plate that is on top of a lazy susan bearing. On the underside of the lazy susan bearing, there is a motor mounting plate. When the motor is mounted to this plate, it connects directly to the blaster base. Although the CAD model shows a single, uniform plate for mounting the NARF blaster, the mounting plate on the current turret uses two plates stacked - one made of acrylic and another made of wood. The acrylic plate is to ensure that there is no deformation, since the motor directly drives the plate on its shaft and acrylic is extremely brittle. The wood plate ensures that there is enough thickness that the motor shaft does not stick out. A list of materials sourced from outside of the mechatronics lab is included in the [Materials](#materials) section.
 
@@ -30,6 +33,8 @@ The circuitry for this device is relatively simple. There are 4 main peripheral 
 | Encoder A Output | PC6 |
 | Encoder B Output | PC7 |
 
+![](<pics/Main Motor.jpg>)
+
 This motor has 64 ticks per revolution internally. Given that the output ratio is 50:1, the motor effectively has 3200 ticks per revolution, which is the autoreload value used in the coding.
 
 ### Servo Motor
@@ -40,7 +45,8 @@ This motor has 64 ticks per revolution internally. Given that the output ratio i
 | V_in | Power Supply 12V |
 | Servo Ground | GND |
 
-![](<circuit diagrams/Servo Control.jpg>)
+<img src="circuit diagrams/Servo Control.jpg" width="250"/>
+<img src="pics/Servo Voltage Regulator.jpg" width="250"/>
 
 Since the servo motor cannot handle 12 volts of power, it must use a voltage regulator to keep the servo power at 5 volts.
 
@@ -53,6 +59,8 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 | SDA | B9 |
 | SCL | B8 |
 
+<img src="pics/IR camera.jpg" width="250"/>
+
 ### Flywheels
 
 | **Flywheel Pin** | **Nucleo Pin** |
@@ -60,7 +68,8 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 | MOSFET Gate | PC3 |
 | Ground | GND |
 
-![](<circuit diagrams/Flywheel Control.png>)
+<img src="circuit diagrams/Flywheel Control.png" width="250"/>
+<img src="pics/Flywheel Control.jpg" width="250"/>
 
 Pin C3 is used to control the NERF flyhweels.
 
@@ -82,20 +91,55 @@ Pin C3 is used to control the NERF flyhweels.
 | #12 Wood Screws, 1-1/2", 3-pack | Home Depot | N/A | Attaches lower half of lazy susan<br>and motor mounting plate to wooden<br>supports | 2 |
 | Wooden Legs, 4" | Home Depot | N/A | Turret supports | 4 |
 
+<br/><br/>
+
 # Software
 
-The software used will be covered briefly here but will be discussed more extensively within the Doxygen documentation.
-
-Due to the sequential nature of the dueling procedure, the device can be coded using a single task with multiple states instead of cotasking. The currently working version of main is *main_v2.py*, which uses this single task implementation. However, there is also the cotask version of the file, *main.py*. This version of main (main.py) is not fully debugged and still has issues, so main_v2.py is the used file for demonstration and will be the software discussed within the documentation.
-
-The dueling is completed in 6 repeating steps, besides intialization. The peripheral(s) used during the step are shown in italics:
+The dueling is completed in 7 repeating steps, besides intialization. The peripheral(s) used during the step are shown in italics:
 
 1. Wait for button press.
-2. Wait 5 seconds.
-3. Check current position of opponent. *-IR camera*
-4. Turn to aim at opponent. *-Motor*
-5. Fire. *-Servo, Flywheels*
-6. Turn back around and reset to Step 1. *-Motor*
+2. Turn to face opponent. *-Motor*
+3. Wait 5 seconds.
+4. Check current position of opponent. *-IR camera*
+5. Adjust aim. *-Motor*
+6. Fire. *-Servo, Flywheels*
+7. Turn back around and reset to Step 1. *-Motor*
+
+Due to the sequential nature of the dueling procedure, only two tasks are needed. 
+
+### Task 1: Mastermind
+The first task handles the looping dueling procedure. It involves 7 states. There is only 1 intertask variable, *motor_setpoint*, which stores the motor setpoint.
+
+![](<fsm/T1 - Mastermind.jpg>)
+
+**S0: INIT** <br>
+This state intializes the system. It sets the servo control pins, the flywheel pins, the start button on the Nucleo, and initializes the IR camera.
+
+**S1: BUTTON** <br>
+Repeatedly checks if the blue button on the Nucleo has been pressed. If it has been pressed, the state transitions to state 2. If not pressed, the state does nothing and yields.
+
+**S2: WAIT** <br>
+Turns around the NERF blaster 180 degrees and waits for 5 seconds. The state accomplishes this by waiting for 10 ms intervals at a time and yielding in between each interval.
+
+**S3: CAM** <br>
+This state checks if an image has been captured from the IR camera. If no image has been captured, the state does nothing and yields. If there is an image, the state finds the line within the data with the greatest heat value sum and produces an angle to turn to.
+
+**S4: MOTOR** <br>
+Using the angle produced in state 3, the motor setpoint is adjusted to achieve the desired angle.
+
+**S5: FIRE** <br>
+This state starts the uninterruptible firing sequence:
+1. Flywheels on
+2. Servo pulls trigger
+3. Flywheels off
+4. Servo returns to its original position
+
+**S6: RESET** <br>
+Turns the blaster back around and resets to state 1.
+
+
+
+![](<fsm/T2 - Motor Control.jpg>)
 
 The full Doxygen documentation can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/).
 
