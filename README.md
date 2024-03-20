@@ -1,5 +1,6 @@
 README.md
 =========
+Author: Nathaniel Davis
 
 # Introduction
 
@@ -105,6 +106,20 @@ The dueling is completed in 7 repeating steps, besides intialization. The periph
 6. Fire. *-Servo, Flywheels*
 7. Turn back around and reset to Step 1. *-Motor*
 
+## Files
+
+The files used are:
+* [main_v3.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/main_v3.py) - Holds the tasks and states of the device
+* [motor_driver_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/motor_driver_updated.py) - Reference for motor class object. This class sets the PWM of the motor
+* [encoder_reader_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/encoder_reader_updated.py) - Reference for encoder class object. This class reads the motor encoder
+* [motorwithencoder_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/motorwithencoder_updated.py) -  Reference for the motor controller class object. This class controls the motor through PI control.
+* [servo.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/servo.py) -  Reference for the servo class object. This class controls the servo through pulse width signals.
+* [mlx_cam.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/mlx_cam.py) - Reference for the IR camera class object. This class takes pictures using the IR camera by TWI communication.
+
+The full Doxygen documentation of all the files can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/).
+
+## Tasks / States
+
 Due to the sequential nature of the dueling procedure, only two tasks are needed. 
 
 ### Task 1: Mastermind
@@ -137,9 +152,29 @@ This state starts the uninterruptible firing sequence:
 **S6: RESET** <br>
 Turns the blaster back around and resets to state 1.
 
-
+### Task 2: Motor Control
+The second task simply handles the motor control. It constantly tries to reach the motor setpoint defined by the *motor_setpoint* intertask variable. The motor controller uses PI control to accurately (albeit slowly) obtain the proper angle. There are only 2 states.
 
 ![](<fsm/T2 - Motor Control.jpg>)
 
-The full Doxygen documentation can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/).
+**S0: INIT** <br>
+This state intializes the motor control. Here, the motor and encoder pins are defined and the motor, encoder, and motor controller class objects are created.
 
+**S1: UPDATE_MOTOR** <br>
+Repeatedly udpates the PWM to the motor through PI control. The setpoint used is pulled from motor_setpoint.
+
+<br/><br/>
+
+# Results
+
+The system was tested through repeated dueling. Unfortunately there are many flaws to this system.
+
+The device can properly turn to face the opponent, check the camera, adjust accordingly, and turn on the flywheels, but is unfortunately unable to fire darts.
+
+The first flaw is the trigger system. The first servo we used drew too much current, which I did not discover until later in the project. While testing the servo and firing procedure, I had been using my desktop computer as the USB power source for the Nucleo, which had sufficient current supply. However, when I began to use my laptop, the current draw (which exceeded the ~0.5 amp fuse in the USB port), it shut my laptop off. We began to search for other solutions, including using a voltage regulator, which only works some of the time. If the torque of the motor ever accidentally exceeds a certain amount, the voltage regulator will drop to 1 volt supplied to the servo. If given more time, a more robust servo trigger system would be devloped. It would require a combination of circuit redesign to get the current needed to the servo as well as manufacturing redesign to make sure the servo motor does not have to exert as much effort (and can pull the trigger more reliably).
+
+The second flaw is in the PI motor control. The first and last moves of the duel are large, 180 degree turns that do not need to be accurate but need to be quick. In this case, a larger Kp and a smaller Ki is desired, as too large of a Ki causes the motor to overshoot by a large amount and then swing across the desired setpoint wildly. During the fine targeting after receiving the camera info, however, there is only a small difference between the motor's current position and the desired setpoint. In this case, a larger Ki is desired to make that small difference matter and provide more rapid fine adjustment. If given more time, more intertask variables would be implemented to allow control of the Ki and Kp values from Task 1: Mastermind to adjust the Kp and Ki during each move.
+
+The third flaw is in the motor shaft power transfer. There is too much tolerance between the motor shaft and the blaster base plate. Although the motor can supply the necessary torque to spin the plate, an independent geared system would have better sufficed to allow greater precision in the angle. This is compounded by the fact that the motor chosen only has 3200 ticks per revolution (as compared to the standard ME 405 kit's motor with 65535 ticks per revolution).
+
+The final flaw is in the IR adjustment. It is not well tuned. This is also due to the motor control inacurracy decribed in the third flaw.
