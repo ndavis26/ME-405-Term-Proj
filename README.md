@@ -45,8 +45,8 @@ This motor has 64 ticks per revolution internally. Given that the output ratio i
 | V_in | Power Supply 12V |
 | Servo Ground | GND |
 
-<img src="circuit diagrams/Servo Control.jpg" width="250"/>
-<img src="pics/Servo Voltage Regulator.jpg" width="250"/>
+<img src="circuit diagrams/Servo Control.jpg" width="300"/>
+<img src="pics/Servo Voltage Regulator.jpg" width="300"/>
 
 Since the servo motor cannot handle 12 volts of power, it must use a voltage regulator to keep the servo power at 5 volts.
 
@@ -59,7 +59,7 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 | SDA | B9 |
 | SCL | B8 |
 
-<img src="pics/IR camera.jpg" width="250"/>
+<img src="pics/IR camera.jpg" width="300"/>
 
 ### Flywheels
 
@@ -68,8 +68,8 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 | MOSFET Gate | PC3 |
 | Ground | GND |
 
-<img src="circuit diagrams/Flywheel Control.png" width="250"/>
-<img src="pics/Flywheel Control.jpg" width="250"/>
+<img src="circuit diagrams/Flywheel Control.png" width="300"/>
+<img src="pics/Flywheel Control.jpg" width="300"/>
 
 Pin C3 is used to control the NERF flyhweels.
 
