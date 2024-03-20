@@ -4,7 +4,7 @@ var indexSectionsWithContent =
   1: "ems",
   2: "ems",
   3: "ems",
-  4: "_acgmoprstz",
+  4: "_acgoprstz",
   5: "_acefikmnoprst"
 };
 

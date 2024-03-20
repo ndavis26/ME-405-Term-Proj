@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['task1_0',['task1',['../namespacemain.html#af4b8f4290f8d32e70654f6deb864787f',1,'main']]],
-  ['task2_1',['task2',['../namespacemain.html#a99d189b8f9eb3784cf7d4e5c3241b562',1,'main']]],
-  ['task3_2',['task3',['../namespacemain.html#a120516a5d42c212c898d4616d266077a',1,'main']]]
+  ['task1_0',['task1',['../namespacemain__v3.html#a962f88479545af90b0953acc6307bf52',1,'main_v3']]],
+  ['task2_1',['task2',['../namespacemain__v3.html#a88965fd05920e9d70095c9de08018025',1,'main_v3']]]
 ];
