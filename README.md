@@ -1,10 +1,13 @@
 README.md
 =========
 Author: Nathaniel Davis
+<br>GitHub Repository Link: [ME 405 Term Project](https://github.com/ndavis26/ME-405-Term-Proj)
 
 # Introduction
 
-The purpose of this device is to autonomously aim a NERF blaster at a target and fire it after the program is started. It is intended for use by children, with a similar use case as other foam-flinging toys, where the goal is to pelt friends and "foes" alike with harmless foam darts. However, the use of the design can reach far beyond foam darts. Given that the sensor detects heat signatures and operates based off of the greatest heat signature, the code can be used for other applications, such as autonomous fire control, where the device would aim water at a fire's greatest heat location to douse the fire (most often its base, which is where a fire should be targeted with water).
+The purpose of this device is to autonomously aim a NERF blaster at a target and fire it after the program is started. The device was designed to follow a NERF turret [dueling procedure](#dueling-procedure) between two opposing teams.
+
+It is intended for use by children, with a similar use case as other foam-flinging toys, where the goal is to pelt friends and "foes" alike with harmless foam darts. However, the use of the design can reach far beyond foam darts. Given that the sensor detects heat signatures and operates based off of the greatest heat signature, the code can be used for other applications, such as autonomous fire control, where the device would aim water at a fire's greatest heat location to douse the fire (most often its base, which is where a fire should be targeted with water).
 
 <br/><br/>
 
@@ -15,7 +18,7 @@ The purpose of this device is to autonomously aim a NERF blaster at a target and
 ![](CAD/NerfTurret.PNG)
 ![](<pics/Whole Turret.jpg>)
 
-The hardware involved features a modified NERF blaster toy to fire the darts.[^1] This blaster is staged upon a flat plate that is on top of a lazy susan bearing. On the underside of the lazy susan bearing, there is a motor mounting plate. When the motor is mounted to this plate, it connects directly to the blaster base. Although the CAD model shows a single, uniform plate for mounting the NARF blaster, the mounting plate on the current turret uses two plates stacked - one made of acrylic and another made of wood. The acrylic plate is to ensure that there is no deformation, since the motor directly drives the plate on its shaft and acrylic is extremely brittle. The wood plate ensures that there is enough thickness that the motor shaft does not stick out. A list of materials sourced from outside of the mechatronics lab is included in the [Materials](#materials) section.
+The hardware involved features a modified NERF blaster toy to fire the darts.[^1] This blaster is staged upon a flat plate that is on top of a lazy susan bearing. On the underside of the lazy susan bearing, there is a motor mounting plate. When the motor is mounted to this plate, it connects directly to the blaster base. Although the CAD model shows a single, uniform plate for mounting the NARF blaster, the mounting plate on the current turret uses two plates stacked - one made of acrylic and another made of wood. The acrylic plate is to ensure that there is no deformation, since the motor directly drives the plate on its shaft and acrylic is extremely brittle. The wood plate ensures that there is enough thickness that the motor shaft does not stick out. A list of materials sourced from outside of the mechatronics lab is included in the [Materials](#materials) appendix.
 
 [^1]: Given that NERF brand toys are not *guns* (which fire *bullets*), they will be referred to as *"blasters"* throughout this document (which fire *darts*).
 
@@ -74,24 +77,6 @@ Since the servo motor cannot handle 12 volts of power, it must use a voltage reg
 
 Pin C3 is used to control the NERF flyhweels.
 
-## Materials
-
-| **Item** | **Source** | **Link to Purchase or Info** | **Function** | **Quantity** |
-|---|---|---|---|---|
-| NERF Modulus Stryfe Blaster | Amazon | [Purchase](https://www.amazon.com/NERF-Motorized-Extension-Official-Exclusive/dp/B06XWF6NYW) | Fires foam dart | 1 |
-| Polulu 50:1 Metal Gearmotor  | Robotics Club | [Info](https://www.pololu.com/product/4753/specs) | Drives blaster base plate | 1 |
-| Lazy Susan  | Amazon | [Purchase](https://www.amazon.com/Turntable-bearing-rotating-cabinet-profile/dp/B08N52SVXF/ref=sr_1_5?crid=QEYA1NV8CA09&dib=eyJ2IjoiMSJ9.CMWjk2w-krsiL7peqCRVGm3W2gQaMjQGNbthVwyHQjTypNlGZs2VOZTHS3H_GIFq6Xziwl5j5dOtYv1_zar56G5uAWkpMtW1MNDaYM-67PEwL6wPoq9B0EWuAzYmD0b71HVDyV94N078vdZwfOOz1iGUHZBz31XryJTImlymTNS0DIW9eimfh2QxxdsWvfzapHUppExcQjaQf11oqseodX1cS_x_K5a1A84BwVE8K-Xo-ouSw5b62tj3LhWTRxUQgLhotKcvI61DQ2U9M_M4VuD9idzFSWsJsD2yY3MAz6A.tn3RYjO4Nj1wbqpFDI-VxyI9_y5sIj3FluF1KYcRKC4&dib_tag=se&keywords=lazy%2Bsusan%2Bbearing&qid=1710824558&sprefix=lazy%2Bsusan%2Bbearin%2Caps%2C155&sr=8-5&th=1) | Allows rotation between <br>motor mount and blaster base plate | 1 |
-| Mounting Plate - Wood | Manufactured - Laser Cut | N/A | Blaster mounting top plate | 1 |
-| Mounting Plate - Acrylic | Manufactured - Laser Cut | N/A | Blaster mounting bottom plate | 1 |
-| Motor Mounting Plate | 3D Printed | N/A | Motor mounting plate | 1 |
-| Rail Clip with Servo  | 3D Printed | N/A | Connects servo, blaster, and <br>base plate | 1 |
-| Towerpro MG995 | Robotics Club | [Info](https://servodatabase.com/servo/towerpro/mg995) | Pulls blaster trigger | 1 |
-| IRFZ44N | Amazon | [Purchase](https://www.amazon.com/dp/B07MW1N4Q5?psc=1&ref=ppx_yo2ov_dt_b_product_details) | MOSFET for controlling blaster<br>flywheels | 1 |
-| M3-0.5 Screws, 8 mm, 4-pack | Home Depot | N/A | Motor mounting screws | 2 |
-| #10-32 Machine Screws and Nuts Combo,<br>3/4", 8-pack | Home Depot | N/A | Holds together base plate | 2 |
-| #12 Wood Screws, 1-1/2", 3-pack | Home Depot | N/A | Attaches lower half of lazy susan<br>and motor mounting plate to wooden<br>supports | 2 |
-| Wooden Legs, 4" | Home Depot | N/A | Turret supports | 4 |
-
 <br/><br/>
 
 # Software
@@ -114,7 +99,7 @@ The files used are:
 * [encoder_reader_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/encoder_reader_updated.py) - Reference for encoder class object. This class reads the motor encoder
 * [motorwithencoder_updated.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/motorwithencoder_updated.py) -  Reference for the motor controller class object. This class controls the motor through PI control.
 * [servo.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/servo.py) -  Reference for the servo class object. This class controls the servo through pulse width signals.
-* [mlx_cam.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/mlx_cam.py) - Reference for the IR camera class object. This class takes pictures using the IR camera by TWI communication.
+* [mlx_cam.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/mlx_cam.py) - Reference for the IR camera class object. This class takes pictures using the IR camera by TWI communication. Original file is sourced from the [ME405-Support GitHub repository](https://github.com/spluttflob/ME405-Support).
 
 The full Doxygen documentation of all the files can be found [here](https://ndavis26.github.io/ME-405-Term-Proj/).
 
@@ -167,9 +152,21 @@ Repeatedly udpates the PWM to the motor through PI control. The setpoint used is
 
 # Results
 
-The system was tested through repeated dueling. Unfortunately there are many flaws to this system.
+## Testing
 
-The device can properly turn to face the opponent, check the camera, adjust accordingly, and turn on the flywheels, but is unfortunately unable to fire darts.
+The overall system was tested through repeated dueling, but individual components were tested through different means. 
+
+The motor control was tested by repeatedly having the system rotate 180 degrees as well as having it do small aiming adjustments. The Kp and Ki were then adjusted until both procedures could be performed in an acceptable amount of time. 
+
+The camera was tested by standing at different angles relative to the IR camera and adjusting the angle it gives based on the IR picture it takes.
+
+The flywheel and servo control were tested using the [firing test.py](https://github.com/ndavis26/ME-405-Term-Proj/blob/main/src/test/firing%20test.py) file. This test was used to tune the duration of the servo movement.
+
+## Improvements and Recomendations
+
+Unfortunately there are many flaws to this system.
+
+The device can properly turn to face the opponent, check the camera, adjust accordingly, and turn on the flywheels, but is unfortunately unable to fire darts in its current state due to the servo's malfunction.
 
 The first flaw is the trigger system. The first servo we used drew too much current, which I did not discover until later in the project. While testing the servo and firing procedure, I had been using my desktop computer as the USB power source for the Nucleo, which had sufficient current supply. However, when I began to use my laptop, the current draw (which exceeded the ~0.5 amp fuse in the USB port), it shut my laptop off. We began to search for other solutions, including using a voltage regulator, which only works some of the time. If the torque of the motor ever accidentally exceeds a certain amount, the voltage regulator will drop to 1 volt supplied to the servo. If given more time, a more robust servo trigger system would be devloped. It would require a combination of circuit redesign to get the current needed to the servo as well as manufacturing redesign to make sure the servo motor does not have to exert as much effort (and can pull the trigger more reliably).
 
@@ -178,3 +175,50 @@ The second flaw is in the PI motor control. The first and last moves of the duel
 The third flaw is in the motor shaft power transfer. There is too much tolerance between the motor shaft and the blaster base plate. Although the motor can supply the necessary torque to spin the plate, an independent geared system would have better sufficed to allow greater precision in the angle. This is compounded by the fact that the motor chosen only has 3200 ticks per revolution (as compared to the standard ME 405 kit's motor with 65535 ticks per revolution).
 
 The final flaw is in the IR adjustment. It is not well tuned. This is also due to the motor control inacurracy decribed in the third flaw.
+
+<br/><br/>
+
+# Appendix
+
+## Materials
+
+| **Item** | **Source** | **Link to Purchase or Info** | **Function** | **Quantity** |
+|---|---|---|---|---|
+| NERF Modulus Stryfe Blaster | Amazon | [Purchase](https://www.amazon.com/NERF-Motorized-Extension-Official-Exclusive/dp/B06XWF6NYW) | Fires foam dart | 1 |
+| Polulu 50:1 Metal Gearmotor  | Robotics Club | [Info](https://www.pololu.com/product/4753/specs) | Drives blaster base plate | 1 |
+| Lazy Susan  | Amazon | [Purchase](https://www.amazon.com/Turntable-bearing-rotating-cabinet-profile/dp/B08N52SVXF/ref=sr_1_5?crid=QEYA1NV8CA09&dib=eyJ2IjoiMSJ9.CMWjk2w-krsiL7peqCRVGm3W2gQaMjQGNbthVwyHQjTypNlGZs2VOZTHS3H_GIFq6Xziwl5j5dOtYv1_zar56G5uAWkpMtW1MNDaYM-67PEwL6wPoq9B0EWuAzYmD0b71HVDyV94N078vdZwfOOz1iGUHZBz31XryJTImlymTNS0DIW9eimfh2QxxdsWvfzapHUppExcQjaQf11oqseodX1cS_x_K5a1A84BwVE8K-Xo-ouSw5b62tj3LhWTRxUQgLhotKcvI61DQ2U9M_M4VuD9idzFSWsJsD2yY3MAz6A.tn3RYjO4Nj1wbqpFDI-VxyI9_y5sIj3FluF1KYcRKC4&dib_tag=se&keywords=lazy%2Bsusan%2Bbearing&qid=1710824558&sprefix=lazy%2Bsusan%2Bbearin%2Caps%2C155&sr=8-5&th=1) | Allows rotation between <br>motor mount and blaster base plate | 1 |
+| Mounting Plate - Wood | Manufactured - Laser Cut | N/A | Blaster mounting top plate | 1 |
+| Mounting Plate - Acrylic | Manufactured - Laser Cut | N/A | Blaster mounting bottom plate | 1 |
+| Motor Mounting Plate | 3D Printed | N/A | Motor mounting plate | 1 |
+| Rail Clip with Servo  | 3D Printed | N/A | Connects servo, blaster, and <br>base plate | 1 |
+| Towerpro MG995 | Robotics Club | [Info](https://servodatabase.com/servo/towerpro/mg995) | Pulls blaster trigger | 1 |
+| IRFZ44N | Amazon | [Purchase](https://www.amazon.com/dp/B07MW1N4Q5?psc=1&ref=ppx_yo2ov_dt_b_product_details) | MOSFET for controlling blaster<br>flywheels | 1 |
+| M3-0.5 Screws, 8 mm, 4-pack | Home Depot | N/A | Motor mounting screws | 2 |
+| #10-32 Machine Screws and Nuts Combo,<br>3/4", 8-pack | Home Depot | N/A | Holds together base plate | 2 |
+| #12 Wood Screws, 1-1/2", 3-pack | Home Depot | N/A | Attaches lower half of lazy susan<br>and motor mounting plate to wooden<br>supports | 2 |
+| Wooden Legs, 4" | Home Depot | N/A | Turret supports | 4 |
+| Metal L-Bracket | Robotics Club | N/A | IR camera mount | 1 |
+
+## Dueling Procedure 
+*Referenced from the Term Project Instructions*
+
+To conduct a duel, each team will first place its launcher on a table, with the launchers several paces apart (the distance may be adjusted) and pointing 180° away from the opposing team’s launcher. A member of each team will stand directly behind the table on which the launcher sits, with safety glasses on and entirely behind the table (not off to the sides), against the edge of the table. No decoys or IR blocking methods may be used.
+
+At a start signal from the Second (the dropping of a handkerchief, of course), each launcher’s power will be turned on. Each team member will have five seconds to move horizontally while standing behind the table, keeping at all times behind and not to the sides of the table, standing and facing directly toward their opponent. After those five seconds, the Second will call “Freeze.” For the following ten seconds, each opponent must remain in a fixed position. Each team’s launcher may launch a projectile at their opponent at any time during the ten seconds just described. Any projectile launched after the ten seconds will be considered a miss regardless of where it goes.
+
+After ten seconds frozen or after being struck, an opponent may move as desired.
+
+A projectile which strikes the opponent as the first solid object hit after its flight from the launcher is scored as a hit; any other outcome (including striking the target after bouncing from another object) is a miss.
+
+If an opponent stands behind the launcher, a hit to the launcher will be counted as a hit to the opponent.
+
+Points will be scored for hits and misses as follows:
+
+| **Result** | **Points** |
+|---|---|
+| First hit by first team to hit opponent's target | 3 |
+| First hit by second team to hit opponent's target | 1 |
+| Subsequent hits (overkill...) | 0 |
+| Misses (collateral damage is ungentlepersonly) | -1 |
+
+The winner of a duel is the team which scores more highly than its opponents during a given duel. Duels will be done in (best-of-x, x = 2n + 1, n ∈ Z*) sets.
